@@ -1,0 +1,2 @@
+# FocuskyAnimationsOperater
+Focusky是一款演示文稿软件，本项目了可以帮助你自定义动画。
