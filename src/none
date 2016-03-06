@@ -1,0 +1,64 @@
+public Animations(String filename){
+		try {
+			fr=new FileReader(filename);//实例化FileReader类
+			br=new BufferedReader(fr);//实例化BufferedReader类
+		} catch (FileNotFoundException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		try {
+			String line=br.readLine();
+			while(line!=null){
+				temp+=line;
+				line=br.readLine();
+			}
+			br.close();//关闭流
+			fr.close();
+		} catch (IOException e) {
+			// TODO 自动生成的 catch 块
+			e.printStackTrace();
+		}
+		Pattern p = Pattern.compile("Name:(.*?)Type");
+        Matcher m = p.matcher(temp);
+        while(m.find()){
+        	name = m.group(1);
+        }
+        name = name.trim();
+        p = Pattern.compile("Type:(.*?)Description");
+        m = p.matcher(temp);
+        while(m.find()){
+        	type = m.group(1);
+        }
+        type = type.trim();
+        p = Pattern.compile("Description:(.*?)Version");
+        m = p.matcher(temp);
+        while(m.find()){
+        	description = m.group(1);
+        }
+        description = description.trim();
+        p = Pattern.compile("Version:(.*?)\\*/");
+        m = p.matcher(temp);
+        while(m.find()){
+        	version = m.group(1);
+        }
+        version = version.trim();
+        p = Pattern.compile("@keyframes\\s(.*?)\\s\\{");
+        m = p.matcher(temp);
+        while(m.find()){
+        	id = m.group(1);
+        }
+        String t = null;
+        p = Pattern.compile("@keyframes\\s"+id+"\\s\\{(.*?)\\s\\{");
+        m = p.matcher(temp);
+        while(m.find()){
+        	t = m.group(1);
+        }
+        p = Pattern.compile("\\s*(.\\d?)%");
+        m = p.matcher(t);
+        while(m.find()){
+        	String a = m.group(1);
+        	
+        }
+        System.out.println(m.groupCount());
+        
+	}
